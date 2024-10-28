@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abecedario 1</title>
+    <style>
+        img {
+            max-width: 100px; /* Limitar el ancho de la imagen */
+            margin: 10px; /* Espacio entre imágenes */
+        }
+        .letter-container {
+            display: flex; /* Usar flexbox para organizar las imágenes */
+            flex-wrap: wrap; /* Permitir que las imágenes se ajusten en varias líneas */
+        }
+        .letter-container div {
+            flex: 1 0 30%; /* 30% de ancho para cada imagen (3 columnas) */
+            box-sizing: border-box; /* Incluir padding y border en el ancho total */
+            display: flex; /* Para centrar las imágenes y audios */
+            flex-direction: column; /* Organizar en columna */
+            align-items: center; /* Centrar horizontalmente */
+            margin-bottom: 20px; /* Espacio entre filas */
+        }
+    </style>
+</head>
+<body>
+
+    <center><h1>Universidad Central Del Ecuador</h1></center>
+    <center><h1>Letras del Abecedario con Audios</h1></center>
+    <div class="letter-container" id="letterContainer"></div>
+
+    <script>
+        const letterContainer = document.getElementById('letterContainer');
+
+        // Crear una lista de letras de la A a la Z
+        for (let i = 0; i < 26; i++) {
+            const letter = String.fromCharCode(97 + i); // 'a' es el código 97
+            const letterDiv = document.createElement('div'); // Crear un contenedor para la letra
+
+            // Crear y añadir la imagen
+            const img = document.createElement('img');
+            img.src = `${letter}.png`; // Ruta de la imagen
+            img.alt = letter.toUpperCase(); // Texto alternativo para la imagen
+            letterDiv.appendChild(img); // Añadir la imagen al contenedor
+
+            // Crear y añadir el audio
+            const audio = document.createElement('audio');
+            audio.controls = true; // Mostrar controles de audio
+            const source = document.createElement('source');
+            source.src = `${letter}.mp3`; // Ruta del audio
+            source.type = 'audio/mpeg'; // Tipo de audio
+            audio.appendChild(source); // Añadir la fuente al audio
+            letterDiv.appendChild(audio); // Añadir el audio al contenedor
+
+            letterContainer.appendChild(letterDiv); // Añadir el div al contenedor principal
+        }
+    </script>
+
+</body>
+</html>
